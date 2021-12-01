@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/automanager-app/docker-php-fpm:8.0-fpm-1.0.11
+FROM php:8.0-fpm
 
 RUN apt-get update  \
     && apt-get install -y zlib1g-dev libicu-dev libxml2-dev libpng-dev libzip-dev \

@@ -6,6 +6,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: "assignment"
+      MYSQL_USER: "student"
+      MYSQL_PASSWORD: "letmein"
     ports:
       - "3306:3306"
     volumes:
