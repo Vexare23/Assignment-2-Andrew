@@ -6,16 +6,14 @@ This repository contains a working setup with PHP and MySQL using Docker.
 
 1. Download [Docker Desktop](https://www.docker.com/products/docker-desktop)
 2. Follow the installation instructions (step 1 - 8) from [this page](https://docs.docker.com/desktop/windows/wsl/#install).
-3. Go to this repository on [Gitlab.com](https://gitlab.com/keepgettingbetter/assignment-setup)
-4. Click the "Fork" button in the top right corner and call the new repository `assignment-2`.
-5. Clone the forked repository in your Ubuntu WSL instance:
+5. Clone this repository in your Ubuntu WSL instance:
 ```bash
-$ git clone git@gitlab.com:your-username/assignment-2.git
+$ git clone git@gitlab.com:keepgettingbetter/assignment-2-your-name.git
 ```
 
 6. Now cd into this directory and start the Docker containers:
 ```bash
-   $ cd assignment-2
+   $ cd assignment-2-your-name
    $ docker-compose up -d
 ```
 7. Be patient, get a coffee. First time will take a while.
