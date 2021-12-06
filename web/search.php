@@ -10,9 +10,6 @@ $sth4 = $dbh->prepare("SELECT * FROM products WHERE name LIKE :term");
 $str = '%' . $_GET['name'] . '%';
 $sth4->bindParam(':term', $str);
 $items = $sth4->execute();
-
-$sth4 = $dbh->prepare("SELECT * FROM products;");
-$sth4->execute();
 $items = $sth4->fetchAll(PDO::FETCH_ASSOC);
 
 $verify = 0;
