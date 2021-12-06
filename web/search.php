@@ -6,6 +6,10 @@ $config = getConfiguration();
 $dbh = createDatabaseConnection($config['username'], $config['password'], $config['host'], $config['database']);
 
 //var_dump($_GET);//die();
+$sth4 = $dbh->prepare("SELECT * FROM products WHERE name LIKE :term");
+$str = '%' . $_GET['name'] . '%';
+$sth4->bindParam(':term', $str);
+$items = $sth4->execute();
 
 $sth4 = $dbh->prepare("SELECT * FROM products;");
 $sth4->execute();

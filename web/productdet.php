@@ -4,9 +4,13 @@ require_once 'functions.php';
 $config = getConfiguration();
 $dbh = createDatabaseConnection($config['username'], $config['password'], $config['host'], $config['database']);
 
-
-$sth4 = $dbh->prepare("SELECT * FROM products;");
+$sth4 = $dbh->prepare("SELECT * FROM products WHERE id = :id;");
+$id = (int)$_GET['id'];
+$sth4->bindParam(':id', $id);
 $sth4->execute();
+
+//$sth4 = $dbh->prepare("SELECT * FROM products;");
+//$sth4->execute();
 $items = $sth4->fetchAll(PDO::FETCH_ASSOC);
 //var_dump($items);die()
 ?>
