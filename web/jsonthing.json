@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Cola",
+    "price": 12.34,
+    "categoryId": 2
+  },
+  {
+    "id": 2,
+    "name": "Water",
+    "price": 0.95,
+    "categoryId": 2
+  },
+  {
+    "id": 3,
+    "name": "Fries",
+    "price": 18.99,
+    "categoryId": 1
+  },
+  {
+  "id": 4,
+  "name": "Bread",
+  "price": 5.23,
+  "categoryId": 1
+  },
+  {
+    "id": 5,
+    "name": "Apples",
+    "price": 5.23,
+    "categoryId": 1
+  },
+  {
+    "id": 6,
+    "name": "Sugar",
+    "price": 5.23,
+    "categoryId": 3
+  }
+]

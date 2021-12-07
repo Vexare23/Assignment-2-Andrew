@@ -1,28 +1,33 @@
 <?php
+
 require_once 'functions.php';
+
+require_once __DIR__ . '/lib/classes/categor.php';
+require_once __DIR__ . '/lib/classes/prod.php';
+require_once __DIR__ . '/lib/classes/outstock.php';
+require_once __DIR__ . '/lib/service/loadandwrite.php';
+require_once __DIR__ . '/lib/service/mySQLrepo.php';
+require_once __DIR__ . '/lib/service/jsonrepo.php';
+require_once __DIR__ . '/lib/service/controller.php';
+require_once __DIR__ . '/lib/service/viewer.php';
+
+
 
 $config = getConfiguration();
 $dbh = createDatabaseConnection($config['username'], $config['password'], $config['host'], $config['database']);
 
 $nameErr = $generalErr = '';
-// Example how to use:
 
-//$result = $sth->fetch(PDO::FETCH_ASSOC);
-
+$productRepository = new MySQLProductRepository($dbh);
+//$productRepository = new JSONProductRepository($dbh);
+$renderer = new ProductDetailViewRenderer();
+$productController = new ProductController($productRepository, $renderer);
+//die();
 $sth1 = $dbh->prepare("SELECT * FROM category;");
 $sth1->execute();
 $categor = $sth1->fetchAll(PDO::FETCH_ASSOC);
-//var_dump($categor);
 
-$sth2 = $dbh->prepare("SELECT * FROM products;");
-$sth2->execute();
-$prod = $sth2->fetchAll(PDO::FETCH_ASSOC);
-
-
-//var_dump($_GET);
-//var_dump($_SERVER['HTTP_REFERER']);
-
-//var_dump($GLOBALS);
+$products = $productRepository->findAll();
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && $_GET) {
     if ($_GET['redirect'] == 2) {
@@ -39,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $_GET) {
 }
 ?>
 
-<html>
+<html lang="">
     <head>
         <title>My shop</title>
     </head>
@@ -51,10 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $_GET) {
             <?php foreach ($categor as $item) { ?>
                 <div class="col-lg-4 pet-list-item">
                     <h2>
-                        <a href="/product.php?id=<?php echo $item['id']; ?>">
-                            <?php echo $item['name']; ?>
+                        <a href="/product.php?id=<?php echo $item['id'];
+                        /* echo $item->getid(); */?>">
+                            <?php echo $item['name'];
+                            /* echo $item->getname(); */?>
                         </a>
-                        <hr>
                     </h2>
                 </div>
             <?php } ?>
@@ -76,3 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $_GET) {
         </form>
     </body>
 </html>
+
+
+<?php foreach ($products as $product) {
+//var_dump($product);
+$html = $productController->viewProductAction($product['id']);
+echo $html;
+}

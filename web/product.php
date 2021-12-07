@@ -30,7 +30,6 @@ $cat = $sth5->fetchAll(PDO::FETCH_ASSOC);
                         Name of product: <a href="/productdet.php?id=<?php echo $item['id']; ?>">
                         <?php echo $item['name']; ?>
                     </a>
-                    <hr>
                 </h2>
                 <?php } ?>
             </div>

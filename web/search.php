@@ -21,11 +21,10 @@ foreach ($items as $search) {
 if ($verify == 0) {
     if ($_GET['name'] == '') {
         header('Location: /index.php?redirect=2');
-        die();
     } else {
         header('Location: /index.php?redirect=1');
-        die();
     }
+    die();
 }
 //var_dump($items);die()
 ?>
