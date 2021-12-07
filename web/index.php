@@ -18,8 +18,8 @@ $dbh = createDatabaseConnection($config['username'], $config['password'], $confi
 
 $nameErr = $generalErr = '';
 
-$productRepository = new MySQLProductRepository($dbh);
-//$productRepository = new JSONProductRepository($dbh);
+//$productRepository = new MySQLProductRepository($dbh);
+$productRepository = new JSONProductRepository();
 $renderer = new ProductDetailViewRenderer();
 $productController = new ProductController($productRepository, $renderer);
 //die();
