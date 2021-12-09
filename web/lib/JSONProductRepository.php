@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+namespace App;
 
 class JSONProductRepository implements ProductRepository
 {
@@ -8,9 +10,9 @@ class JSONProductRepository implements ProductRepository
         return json_decode($file, true, JSON_THROW_ON_ERROR);
     }
 
-    public function find($id): OutOfStockProduct /*Product*/
+    public function find($id): /*OutOfStockProduct*/ Product
     {
-        $prod = new OutOfStockProduct /*Product*/ ();
+        $prod = new /*OutOfStockProduct*/ Product ();
         $pls = $this->findAll();
         //var_dump($pls[$id-1]);die();
         $prod->setId($pls[$id-1]['id']);

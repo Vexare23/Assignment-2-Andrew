@@ -1,16 +1,25 @@
 <?php
+declare(strict_types=1);
 
+
+use App\JSONProductRepository;
+use App\MySQLProductRepository;
+use App\ProductController;
+use App\ProductDetailViewRenderer;
+
+require __DIR__ .'/../vendor/autoload.php';
 require_once 'functions.php';
-
-require_once __DIR__ . '/lib/classes/categor.php';
-require_once __DIR__ . '/lib/classes/prod.php';
-require_once __DIR__ . '/lib/classes/outstock.php';
-require_once __DIR__ . '/lib/service/loadandwrite.php';
-require_once __DIR__ . '/lib/service/mySQLrepo.php';
-require_once __DIR__ . '/lib/service/jsonrepo.php';
-require_once __DIR__ . '/lib/service/controller.php';
-require_once __DIR__ . '/lib/service/viewer.php';
-
+/*
+require_once __DIR__ . '/lib/Classes/Category.php';
+require_once __DIR__ . '/lib/Classes/Product.php';
+require_once __DIR__ . '/lib/Classes/OutOfStockProduct.php';
+require_once __DIR__ . '/lib/Exception/ConnectionException.php';
+require_once __DIR__ . '/lib/Service/ProductRepository.php';
+require_once __DIR__ . '/lib/Service/MySQLProductRepository.php';
+require_once __DIR__ . '/lib/Service/JSONProductRepository.php';
+require_once __DIR__ . '/lib/Service/ProductController.php';
+require_once __DIR__ . '/lib/Service/ProductDetailViewRenderer.php';
+*/
 
 
 $config = getConfiguration();
