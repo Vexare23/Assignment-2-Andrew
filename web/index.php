@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 use App\JSONProductRepository;
 use App\MySQLProductRepository;
@@ -8,6 +8,7 @@ use App\ProductController;
 use App\ProductDetailViewRenderer;
 
 require __DIR__ .'/../vendor/autoload.php';
+
 require_once 'functions.php';
 /*
 require_once __DIR__ . '/lib/Classes/Category.php';
@@ -48,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $_GET) {
         $generalErr = "Product is not available in our database.";
     } else {
         $generalErr = '';
-
     }
 }
 ?>

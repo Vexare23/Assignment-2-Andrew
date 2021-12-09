@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App;
 
 use App\Exception\ConnectionException;
@@ -10,11 +12,13 @@ class MySQLProductRepository implements ProductRepository
 
     private \PDO $dbh;
 
-    public function __construct(\PDO $dbh) {
+    public function __construct(\PDO $dbh)
+    {
         $this->dbh = $dbh;
     }
 
-    public function findAll(): array {
+    public function findAll(): array
+    {
 
 
         $config = getConfiguration();
@@ -26,8 +30,10 @@ class MySQLProductRepository implements ProductRepository
         return $sth3->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function find($id): Product {
-        try {
+    public function find($id): Product
+    {
+        try
+        {
             $sth = $this->dbh->prepare("SELECT * FROM products WHERE id = :id LIMIT 1;");
             $some = $id;
             $sth->bindParam(':id', $some);
@@ -36,18 +42,19 @@ class MySQLProductRepository implements ProductRepository
             $prod = new /*OutOfStockProduct*/ Product ();
         $pls = $sth->fetch(\PDO::FETCH_ASSOC);
 
-            if (! $prod = $sth->fetch()) {
+            if (! $prod = $sth->fetch())
+            {
                 throw new ProductNotFoundException();
             }
-
             $prod->setId($pls['id']);
-        $prod->setCategoryId($pls['categoryId']);
-        $prod->setName($pls['name']);
-        $prod->setPrice($pls['price']);
+            $prod->setCategoryId($pls['categoryId']);
+            $prod->setName($pls['name']);
+            $prod->setPrice($pls['price']);
 
         return $prod;
             // Put your existing code here
-        } catch (\PDOException $e) {
+        } catch (\PDOException $e)
+        {
             // We catch any exception here, and wrap it with our own. We need to `use` th
             throw new ConnectionException($e);
         }

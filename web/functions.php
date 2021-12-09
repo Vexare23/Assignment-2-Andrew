@@ -1,7 +1,8 @@
 <?php
-declare(strict_types=1);
-require '/app/vendor/autoload.php';
 
+declare(strict_types=1);
+
+require '/app/vendor/autoload.php';
 
 function getConfiguration(): array {
     return json_decode(file_get_contents(__DIR__.'/../credentials.json'), true);

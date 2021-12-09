@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
+
 require 'vendor/autoload.php';
 
 require_once 'functions.php';
+
 $config = getConfiguration();
 $dbh = createDatabaseConnection($config['username'], $config['password'], $config['host'], $config['database']);
 

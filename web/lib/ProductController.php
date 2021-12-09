@@ -1,11 +1,14 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App;
 
 use App\Exception\ConnectionException;
 use App\Exception\ProductNotFoundException;
 
-class ProductController {
+class ProductController
+{
     private ProductRepository $productRepository;
     private ProductDetailViewRenderer $productDetailViewRenderer;
 
@@ -17,15 +20,18 @@ class ProductController {
 
     public function viewProductAction($productId): string
     {
-        try {
+        try
+        {
             $product = $this->productRepository->find($productId);
             $html = $this->productDetailViewRenderer->renderProduct($product);
         }
-        catch (ConnectionException $connectionException) {
+        catch (ConnectionException $connectionException)
+        {
             // show error message
             $html = 'A database error occurred: ' . $connectionException->getMessage();
         }
-        catch (ProductNotFoundException $productNotFoundException) {
+        catch (ProductNotFoundException $productNotFoundException)
+        {
             $html = $productNotFoundException->getMessage();
         }
         return $html;

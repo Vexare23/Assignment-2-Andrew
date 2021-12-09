@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App;
 
 class ProductDetailViewRenderer
 {
-    public function renderProduct(Product $product): string {
-
+    public function renderProduct(Product $product): string
+    {
         $html = '<div class="container">';
         $html .=    '<div class="row">';
         $html .=        '<div class="col-lg-4 pet-list-item">';
